@@ -1,141 +1,215 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SOK — Paper Resource Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Artifacts and resources for the OVERTON framework.">
-  <link rel="icon" href="data:,">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research Artifact Page</title>
+  <meta name="description" content="Landing page for paper artifacts: black-box framework, evaluation guide, ISO files, scripts, and results." />
+  <link rel="icon" href="data:," />
   <style>
     :root{
-      --bg:#fff; --fg:#111; --muted:#666; --accent:#0b5fff; --card:#f7f7f8; --border:#e6e6e8;
+      --bg:#ffffff; --fg:#111418; --muted:#667085; --card:#f7f7f9; --border:#e6e7eb; --accent:#0b5fff;
+      --link:#0b5fff; --link-visited:#6e59ff; --code:#0f172a; --code-bg:#f4f6ff;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b0b0d; --fg:#f5f7fb; --muted:#a6adbb; --accent:#7aa2ff; --card:#13131a; --border:#26262f; }
+      :root{
+        --bg:#0b0c0f; --fg:#eef1f6; --muted:#aab3c5; --card:#14161b; --border:#242731; --accent:#7aa2ff;
+        --link:#7aa2ff; --link-visited:#a491ff; --code:#e2e8f0; --code-bg:#0f1320;
+      }
     }
+    html{scroll-behavior:smooth}
     *{box-sizing:border-box}
-    body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--fg);}
-    .wrap{max-width:980px; margin:0 auto; padding:24px 16px;}
-    header{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:8px 0 20px;}
-    .brand h1{margin:0; font-size:32px;}
-    .brand p{margin:4px 0 0; color:var(--muted)}
-    .actions{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0}
-    .btn{
-      display:inline-block; padding:.6rem .9rem; border:1px solid var(--border); border-radius:999px;
-      text-decoration:none; color:var(--fg); background:var(--card); font-weight:600;
-    }
+    body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif}
+    a{color:var(--link)} a:visited{color:var(--link-visited)}
+    .container{max-width:1040px; margin:0 auto; padding:0 16px}
+
+    /* Header / Navbar */
+    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in srgb, var(--bg) 88%, transparent); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
+    .brand{display:flex; align-items:baseline; gap:10px}
+    .brand h1{font-size:20px; margin:0}
+    .brand .sub{font-size:14px; color:var(--muted)}
+    .spacer{flex:1}
+    .navlinks{display:flex; flex-wrap:wrap; gap:8px}
+    .navlinks a{padding:.45rem .7rem; border-radius:10px; text-decoration:none; color:var(--fg)}
+    .navlinks a:hover{background:var(--card)}
+    .btn{display:inline-block; padding:.55rem .9rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
     .btn:hover{border-color:var(--accent)}
-    main h1, main h2{margin-top:1.6em}
-    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; margin:16px 0;}
+    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+    .btn.primary:hover{filter:saturate(110%)}
+
+    /* Hero */
+    .hero{padding:36px 0 18px}
+    .hero h2{margin:0 0 8px; font-size:28px}
+    .hero p{margin:0; color:var(--muted)}
+
+    /* Sections */
+    section{padding:28px 0; border-top:1px solid var(--border)}
+    section:first-of-type{border-top:none}
+    h3{font-size:24px; margin:0 0 12px}
     .lead{color:var(--muted)}
-    ul{padding-left:1.2rem}
-    .video{position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:#000;}
-    .video iframe{position:absolute; inset:0; width:100%; height:100%;}
-    .foot{font-size:.9rem; color:var(--muted); margin-top:6px; word-break:break-all}
+
+    /* Cards / grids */
     .grid{display:grid; gap:16px}
-    @media (min-width:800px){ .grid{grid-template-columns:1fr 1fr;} }
-    .note{font-size:.95rem; color:var(--muted)}
-    footer{margin:32px 0 8px; color:var(--muted); font-size:.9rem; text-align:center}
+    @media (min-width: 900px){ .grid.two{grid-template-columns: 1fr 1fr} }
+    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
+
+    /* Code blocks */
+    pre{background:var(--code-bg); color:var(--code); padding:12px 14px; border-radius:12px; overflow:auto; border:1px solid var(--border)}
+    code{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace; font-size: .95em}
+
+    /* Footer */
+    footer{padding:24px 0 48px; color:var(--muted); text-align:center; border-top:1px solid var(--border)}
+
+    /* Small helpers */
+    .pill{display:inline-block; padding:.25rem .55rem; border:1px solid var(--border); border-radius:999px; font-size:.85rem; color:var(--muted)}
+    .downloads a{display:inline-block; padding:.5rem .75rem; border:1px dashed var(--border); border-radius:10px; text-decoration:none; margin:.25rem .25rem .25rem 0}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
+  <!-- Sticky top bar with GitHub button and in-page links -->
+  <div class="topbar">
+    <div class="container nav">
       <div class="brand">
-        <h1>OVERTON</h1>
-        <p class="header">Resource page for OVERTON framework</p>
+        <h1>Artifact Page</h1>
+        <span class="sub">research resources</span>
       </div>
-      <ul class="actions">
-        <li><a class="btn" href="https://github.com/OvertonV2X/OVERTON" target="_blank" rel="noopener">View on GitHub</a></li>
-        <li><a class="btn" href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW" target="_blank" rel="noopener">Experiment Data</a></li>
-        <li><a class="btn" href="https://github.com/OvertonV2X/veins-f2md" target="_blank" rel="noopener">VEINS Maps</a></li>
-      </ul>
-    </header>
-
-    <main>
-      <section class="card">
-        <h1>Introduction</h1>
-        <p>
-          This page contains artifacts for the paper: <strong>“OVERTON”</strong> (submitted to ACM CCS 2024).
-          The artifacts include OVERTON source code, VEINS &amp; F2MD simulator version used for experiments,
-          traffic scenario implementations, and generated data for the scenario grid we detailed in the paper.
-        </p>
-        <ul>
-          <li>OVERTON framework and instructions: <a href="https://github.com/OvertonV2X/OVERTON" target="_blank" rel="noopener">GitHub</a></li>
-          <li>VEINS maps and scenarios: <a href="https://github.com/OvertonV2X/veins-f2md" target="_blank" rel="noopener">Repo</a></li>
-          <li>Generated traffic logs: <a href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW" target="_blank" rel="noopener">Google Drive</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>VEINS Scenarios for Experiments</h1>
-        <p class="lead">Attacker nodes are depicted in red and genuine nodes in green.</p>
-
-        <div class="grid">
-          <article class="card">
-            <h2>Manhattan Grid</h2>
-            <p>
-              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/ManhattanGrid" target="_blank" rel="noopener">This scenario</a>
-              implements a single-lane 10×10 grid map.
-            </p>
-            <ul>
-              <li>Single-lane roads with a 10×10 layout; intersections spaced 100 m apart.</li>
-              <li>100 vehicles with varying attacker densities and a balanced mix of considered attacks.</li>
-            </ul>
-            <div class="video">
-              <iframe src="https://www.youtube.com/embed/0aMBMmMEcPw" title="Manhattan Grid — OVERTON" allowfullscreen></iframe>
-            </div>
-            <div class="foot">Video: <a href="https://youtu.be/0aMBMmMEcPw" target="_blank" rel="noopener">https://youtu.be/0aMBMmMEcPw</a></div>
-          </article>
-
-          <article class="card">
-            <h2>Erlangen Flock</h2>
-            <p>
-              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/erlangenScenario" target="_blank" rel="noopener">This scenario</a>
-              simulates a realistic rush-hour with frequent congestion.
-            </p>
-            <ul>
-              <li>Modified Erlangen city map, single designated route (no detours).</li>
-              <li>150 vehicles flock out of a parking lot every 6 s, causing occasional traffic jams.</li>
-            </ul>
-            <div class="video">
-              <iframe src="https://www.youtube.com/embed/AvogtLSoI4g" title="Erlangen Flock — OVERTON" allowfullscreen></iframe>
-            </div>
-            <div class="foot">Video: <a href="https://youtu.be/AvogtLSoI4g" target="_blank" rel="noopener">https://youtu.be/AvogtLSoI4g</a></div>
-          </article>
-
-          <article class="card">
-            <h2>IRTSX Map</h2>
-            <p>
-              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/IRTSystemXScenario" target="_blank" rel="noopener">This scenario</a>
-              emulates regular traffic in the IRTSX campus.
-            </p>
-            <ul>
-              <li>Small network → fast and predictable runs.</li>
-              <li>Traffic lights, pedestrians, crossroads; realistic path-loss models.</li>
-              <li>300+ entities arbitrarily enter/leave the network.</li>
-            </ul>
-            <div class="video">
-              <iframe src="https://www.youtube.com/embed/vBeQfSryIos" title="IRTSX — OVERTON" allowfullscreen></iframe>
-            </div>
-            <div class="foot">Video: <a href="https://youtu.be/vBeQfSryIos" target="_blank" rel="noopener">https://youtu.be/vBeQfSryIos</a></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>VEINS &amp; F2MD Simulator</h2>
-        <p>
-          OVERTON works with both ITS-G5 (IEEE 802.11p) and C-V2X (3GPP PC5 Mode 4).
-          We evaluate using VEINS &amp; F2MD V2X traffic simulators.
-          Installation instructions are available
-          <a href="https://github.com/josephkamel/F2MD" target="_blank" rel="noopener">here</a>.
-        </p>
-        <p class="note">Tip: provide a fixed release/tag of the simulator and your code for reproducibility.</p>
-      </section>
-    </main>
-
-    <footer>© OVERTON — Artifact page</footer>
+      <div class="spacer"></div>
+      <nav class="navlinks" aria-label="Section navigation">
+        <a href="#intro">Introduction</a>
+        <a href="#blackbox">Black Box Framework</a>
+        <a href="#evaluate">How to Evaluate a Paper</a>
+        <a href="#iso">ISO Files</a>
+        <a href="#scripts">Scripts</a>
+        <a href="#results">Results</a>
+      </nav>
+      <a class="btn primary" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
   </div>
+
+  <header class="container hero">
+    <h2>Welcome — همهٔ مواد و نتایج اینجاست</h2>
+    <p>می‌توانید از لینک بالا وارد ریپازیتوری شوید و پایین صفحه را اسکرول کنید تا هر بخش را ببینید.</p>
+  </header>
+
+  <main class="container">
+    <!-- Introduction -->
+    <section id="intro" aria-labelledby="intro-title">
+      <h3 id="intro-title">Introduction</h3>
+      <p class="lead">Briefly describe the goal of the project, the paper this artifact belongs to, and what reviewers/users will find here.</p>
+      <ul>
+        <li><strong>Paper:</strong> <a href="#">PDF link</a></li>
+        <li><strong>Codebase:</strong> <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">GitHub repository</a></li>
+        <li><strong>Contact during review:</strong> anonymous email or GitHub Issues</li>
+      </ul>
+    </section>
+
+    <!-- Black Box Framework -->
+    <section id="blackbox" aria-labelledby="blackbox-title">
+      <h3 id="blackbox-title">Black Box Framework</h3>
+      <p>Our scoring framework computes <em>Privacy</em>, <em>Safety</em>, and <em>Utility</em> from a paper-specific metrics file and a fixed weights file.</p>
+      <div class="grid two">
+        <div class="card">
+          <h4 class="pill">Config structure</h4>
+          <pre><code>{
+  "Privacy": { "P1a": { "answer": true,  "weight": 0.1, "evidence": "" },
+                "P1b": { "answer": false, "weight": 0.1, "evidence": "" } },
+  "Safety":  { /* ... */ },
+  "Utility": { /* ... */ }
+}</code></pre>
+        </div>
+        <div class="card">
+          <h4 class="pill">Weights file</h4>
+          <pre><code>{
+  "Privacy": { "P1a": 0.1, "P1b": 0.1, /* ... */ },
+  "Safety":  { /* ... */ },
+  "Utility": { /* ... */ }
+}</code></pre>
+        </div>
+      </div>
+      <p>The script awards each <code>true</code> metric the corresponding weight and sums to produce final scores.</p>
+    </section>
+
+    <!-- How to evaluate a paper -->
+    <section id="evaluate" aria-labelledby="evaluate-title">
+      <h3 id="evaluate-title">How to Evaluate a Paper</h3>
+      <ol>
+        <li>Fill the <strong>metrics JSON</strong> for the paper (see template above).</li>
+        <li>Use the fixed <strong>weights JSON</strong>.</li>
+        <li>Run the scoring script (see <a href="#scripts">Scripts</a>).</li>
+        <li>Collect scores and export to CSV for the <a href="#results">Results</a> section.</li>
+      </ol>
+      <pre><code># Example command
+python tools/score_paper.py \
+  --metrics configs/paper123.metrics.json \
+  --weights configs/weights.json \
+  --out outputs/paper123_scores.json</code></pre>
+    </section>
+
+    <!-- ISO files -->
+    <section id="iso" aria-labelledby="iso-title">
+      <h3 id="iso-title">ISO Files</h3>
+      <p class="lead">Prebuilt images/releases for reproducibility (pick the version that matches the paper).</p>
+      <div class="card downloads">
+        <a href="#">artifact-v1.iso</a>
+        <a href="#">artifact-v1.1.iso</a>
+        <a href="#">artifact-v2.iso</a>
+        <a href="#">checksums.txt</a>
+      </div>
+      <p class="note">Tip: host ISOs on GitHub Releases and link them here. Provide checksums and a short boot guide.</p>
+    </section>
+
+    <!-- Scripts -->
+    <section id="scripts" aria-labelledby="scripts-title">
+      <h3 id="scripts-title">Scripts</h3>
+      <p>Minimal commands to reproduce the main results.</p>
+      <div class="grid two">
+        <div class="card">
+          <h4 class="pill">Setup</h4>
+          <pre><code>python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt</code></pre>
+        </div>
+        <div class="card">
+          <h4 class="pill">Run</h4>
+          <pre><code>python scripts/run_experiments.py --config configs/default.json
+python scripts/plot_results.py --input outputs/results.csv --out figs/</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" aria-labelledby="results-title">
+      <h3 id="results-title">Results</h3>
+      <p>Summary scores and figures. You can embed small PNG/SVG charts here or link to a gallery.</p>
+      <div class="grid two">
+        <div class="card">
+          <h4 class="pill">Scores (example)</h4>
+          <pre><code>{
+  "paper_id": "P-001",
+  "privacy": 0.72,
+  "safety": 0.64,
+  "utility": 0.81
+}</code></pre>
+        </div>
+        <div class="card">
+          <h4 class="pill">Figures</h4>
+          <ul>
+            <li><a href="#">Figure 1 — Overview diagram</a></li>
+            <li><a href="#">Figure 2 — P/U/S scatter</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Research Artifact Page — <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">GitHub</a></div>
+  </footer>
+
+  <script>
+    // Update footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
