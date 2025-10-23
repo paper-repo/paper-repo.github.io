@@ -7,6 +7,7 @@
   <meta name="description" content="Landing page for paper artifacts." />
   <link rel="icon" href="data:," />
   <style>
+    /* === ORIGINAL STYLE (kept) === */
     :root{
       --bg:#ffffff; --fg:#111418; --muted:#667085; --card:#f7f7f9; --border:#e6e7eb; --accent:#0b5fff;
       --link:#0b5fff; --link-visited:#6e59ff; --code:#0f172a; --code-bg:#f4f6ff;
@@ -19,44 +20,46 @@
     }
     html{scroll-behavior:smooth}
     *{box-sizing:border-box}
-    body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif}
     a{color:var(--link)} a:visited{color:var(--link-visited)}
     .container{max-width:1040px; margin:0 auto; padding:0 16px}
 
+    /* Top bar (kept minimal; no right buttons/section links) */
     .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in srgb, var(--bg) 88%, transparent); border-bottom:1px solid var(--border)}
     .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
     .brand{display:flex; align-items:baseline; gap:10px}
     .brand h1{font-size:20px; margin:0}
     .brand .sub{font-size:14px; color:var(--muted)}
     .spacer{flex:1}
-    .navlinks{display:flex; flex-wrap:wrap; gap:8px}
-    .navlinks a{padding:.45rem .7rem; border-radius:10px; text-decoration:none; color:var(--fg)}
-    .navlinks a:hover{background:var(--card)}
-    .btn{display:inline-block; padding:.55rem .9rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
-    .btn:hover{border-color:var(--accent)}
-    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
-    .btn.primary:hover{filter:saturate(110%)}
 
-    .hero{padding:36px 0 18px}
+    /* Buttons */
+    .btn{display:inline-block; padding:.6rem 1rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
+    .btn:hover{border-color:var(--accent)}
+    .cta{display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin-top:1rem}
+
+    /* Hero */
+    .hero{padding:36px 0 18px; text-align:center}
     .hero h2{margin:0 0 8px; font-size:28px}
     .hero p{margin:0; color:var(--muted)}
 
+    /* Sections */
     section{padding:28px 0; border-top:1px solid var(--border)}
     section:first-of-type{border-top:none}
     h3{font-size:24px; margin:0 0 12px}
-    .lead{color:var(--muted)}
 
+    /* Optional helpers retained */
     .grid{display:grid; gap:16px}
     @media (min-width: 900px){ .grid.two{grid-template-columns: 1fr 1fr} }
     .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
-
     pre{background:var(--code-bg); color:var(--code); padding:12px 14px; border-radius:12px; overflow:auto; border:1px solid var(--border)}
     code{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace; font-size: .95em}
 
+    /* Footer */
     footer{padding:24px 0 48px; color:var(--muted); text-align:center; border-top:1px solid var(--border)}
   </style>
 </head>
 <body>
+  <!-- Minimal top bar: only brand, no right-side blue button, no section links -->
   <div class="topbar">
     <div class="container nav">
       <div class="brand">
@@ -64,52 +67,49 @@
         <span class="sub">research resources</span>
       </div>
       <div class="spacer"></div>
-      <nav class="navlinks" aria-label="Section navigation">
-        <a href="#intro">Introduction</a>
-        <a href="#blackbox">Black Box Framework</a>
-        <a href="#evaluate">How to Evaluate a Paper</a>
-        <a href="#iso">ISO Files</a>
-        <a href="#scripts">Scripts</a>
-        <a href="#results">Results</a>
-      </nav>
-      <a class="btn primary" href="#" target="_blank" rel="noopener">View on GitHub</a>
     </div>
   </div>
 
+  <!-- Title page + two buttons underneath -->
   <header class="container hero">
-    <h2>Welcome</h2>
-    <p>Write a short description here.</p>
+    <h2><!-- Title goes here --></h2>
+    <p><!-- Optional subtitle goes here --></p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">Secondary Button</a>
+    </div>
   </header>
 
+  <!-- The rest of the page (scrolls normally). Sections are NOT shown in the top row. -->
   <main class="container">
     <section id="intro">
       <h3>Introduction</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
 
     <section id="blackbox">
       <h3>Black Box Framework</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
 
     <section id="evaluate">
       <h3>How to Evaluate a Paper</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
 
     <section id="iso">
       <h3>ISO Files</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
 
     <section id="scripts">
       <h3>Scripts</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
 
     <section id="results">
       <h3>Results</h3>
-      <p></p>
+      <!-- Add content later -->
     </section>
   </main>
 
