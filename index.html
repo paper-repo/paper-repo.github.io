@@ -4,92 +4,121 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Research Artifact Page</title>
+  <meta name="description" content="Landing page for paper artifacts." />
+  <link rel="icon" href="data:," />
   <style>
     :root{
       --bg:#ffffff; --fg:#111418; --muted:#667085; --card:#f7f7f9; --border:#e6e7eb; --accent:#0b5fff;
+      --link:#0b5fff; --link-visited:#6e59ff; --code:#0f172a; --code-bg:#f4f6ff;
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b0c0f; --fg:#eef1f6; --muted:#aab3c5; --card:#14161b; --border:#242731; --accent:#7aa2ff;
+        --link:#7aa2ff; --link-visited:#a491ff; --code:#e2e8f0; --code-bg:#0f1320;
       }
     }
     html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
     body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:960px; margin:0 auto; padding:0 16px}
-    .topbar{position:sticky; top:0; z-index:100; backdrop-filter:blur(6px); background:color-mix(in srgb, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:10px 0}
-    .navlinks{display:flex; flex-wrap:wrap; gap:10px}
-    .navlinks a{padding:6px 10px; border-radius:8px;}
+    a{color:var(--link)} a:visited{color:var(--link-visited)}
+    .container{max-width:1040px; margin:0 auto; padding:0 16px}
+
+    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in srgb, var(--bg) 88%, transparent); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
+    .brand{display:flex; align-items:baseline; gap:10px}
+    .brand h1{font-size:20px; margin:0}
+    .brand .sub{font-size:14px; color:var(--muted)}
+    .spacer{flex:1}
+    .navlinks{display:flex; flex-wrap:wrap; gap:8px}
+    .navlinks a{padding:.45rem .7rem; border-radius:10px; text-decoration:none; color:var(--fg)}
     .navlinks a:hover{background:var(--card)}
-    .btn{padding:8px 12px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-weight:600;}
+    .btn{display:inline-block; padding:.55rem .9rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
     .btn:hover{border-color:var(--accent)}
-    header{padding:32px 0; text-align:center;}
-    header h1{margin:0; font-size:28px;}
-    main section{padding:40px 0; border-top:1px solid var(--border)}
-    main h2{margin-bottom:12px;}
-    footer{padding:24px 0; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
+    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+    .btn.primary:hover{filter:saturate(110%)}
+
+    .hero{padding:36px 0 18px}
+    .hero h2{margin:0 0 8px; font-size:28px}
+    .hero p{margin:0; color:var(--muted)}
+
+    section{padding:28px 0; border-top:1px solid var(--border)}
+    section:first-of-type{border-top:none}
+    h3{font-size:24px; margin:0 0 12px}
+    .lead{color:var(--muted)}
+
+    .grid{display:grid; gap:16px}
+    @media (min-width: 900px){ .grid.two{grid-template-columns: 1fr 1fr} }
+    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
+
+    pre{background:var(--code-bg); color:var(--code); padding:12px 14px; border-radius:12px; overflow:auto; border:1px solid var(--border)}
+    code{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace; font-size: .95em}
+
+    footer{padding:24px 0 48px; color:var(--muted); text-align:center; border-top:1px solid var(--border)}
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container nav">
-      <div class="navlinks">
+      <div class="brand">
+        <h1>Artifact Page</h1>
+        <span class="sub">research resources</span>
+      </div>
+      <div class="spacer"></div>
+      <nav class="navlinks" aria-label="Section navigation">
         <a href="#intro">Introduction</a>
         <a href="#blackbox">Black Box Framework</a>
         <a href="#evaluate">How to Evaluate a Paper</a>
         <a href="#iso">ISO Files</a>
         <a href="#scripts">Scripts</a>
         <a href="#results">Results</a>
-      </div>
-      <a class="btn" href="#" target="_blank">View on GitHub</a>
+      </nav>
+      <a class="btn primary" href="#" target="_blank" rel="noopener">View on GitHub</a>
     </div>
   </div>
 
-  <header>
-    <h1>Research Artifact Page</h1>
-    <p>Fill in your project title and description here.</p>
+  <header class="container hero">
+    <h2>Welcome</h2>
+    <p>Write a short description here.</p>
   </header>
 
   <main class="container">
     <section id="intro">
-      <h2>Introduction</h2>
-      <p>Write your introduction here.</p>
+      <h3>Introduction</h3>
+      <p></p>
     </section>
 
     <section id="blackbox">
-      <h2>Black Box Framework</h2>
-      <p>Describe your black box framework here.</p>
+      <h3>Black Box Framework</h3>
+      <p></p>
     </section>
 
     <section id="evaluate">
-      <h2>How to Evaluate a Paper</h2>
-      <p>Explain how to evaluate a paper here.</p>
+      <h3>How to Evaluate a Paper</h3>
+      <p></p>
     </section>
 
     <section id="iso">
-      <h2>ISO Files</h2>
-      <p>Provide links or descriptions for ISO files here.</p>
+      <h3>ISO Files</h3>
+      <p></p>
     </section>
 
     <section id="scripts">
-      <h2>Scripts</h2>
-      <p>Include or describe your scripts here.</p>
+      <h3>Scripts</h3>
+      <p></p>
     </section>
 
     <section id="results">
-      <h2>Results</h2>
-      <p>Summarize your results here.</p>
+      <h3>Results</h3>
+      <p></p>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Research Artifact Page
+    <div class="container">© <span id="y"></span> Research Artifact Page</div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
