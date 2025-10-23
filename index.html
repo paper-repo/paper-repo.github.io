@@ -1,138 +1,141 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>OVERTON Paper Resource Page</title>
-    
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-		<script type="text/javascript">
-
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-30955754-1']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
-		
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">OVERTON</h1>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SOK — Paper Resource Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Artifacts and resources for the OVERTON framework.">
+  <link rel="icon" href="data:,">
+  <style>
+    :root{
+      --bg:#fff; --fg:#111; --muted:#666; --accent:#0b5fff; --card:#f7f7f8; --border:#e6e6e8;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0b0d; --fg:#f5f7fb; --muted:#a6adbb; --accent:#7aa2ff; --card:#13131a; --border:#26262f; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--fg);}
+    .wrap{max-width:980px; margin:0 auto; padding:24px 16px;}
+    header{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:8px 0 20px;}
+    .brand h1{margin:0; font-size:32px;}
+    .brand p{margin:4px 0 0; color:var(--muted)}
+    .actions{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0}
+    .btn{
+      display:inline-block; padding:.6rem .9rem; border:1px solid var(--border); border-radius:999px;
+      text-decoration:none; color:var(--fg); background:var(--card); font-weight:600;
+    }
+    .btn:hover{border-color:var(--accent)}
+    main h1, main h2{margin-top:1.6em}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; margin:16px 0;}
+    .lead{color:var(--muted)}
+    ul{padding-left:1.2rem}
+    .video{position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:#000;}
+    .video iframe{position:absolute; inset:0; width:100%; height:100%;}
+    .foot{font-size:.9rem; color:var(--muted); margin-top:6px; word-break:break-all}
+    .grid{display:grid; gap:16px}
+    @media (min-width:800px){ .grid{grid-template-columns:1fr 1fr;} }
+    .note{font-size:.95rem; color:var(--muted)}
+    footer{margin:32px 0 8px; color:var(--muted); font-size:.9rem; text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>OVERTON</h1>
         <p class="header">Resource page for OVERTON framework</p>
-        <ul>
-          <li><a class="buttons github" href="https://github.com/OvertonV2X/OVERTON">View On GitHub</a></li>
-          <li class="download"><a class="buttons" href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW">Experiment Data</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/OvertonV2X/veins-f2md">VEINS Maps</a></li>
-        </ul>
-        
-      </header>
-      <section>
+      </div>
+      <ul class="actions">
+        <li><a class="btn" href="https://github.com/OvertonV2X/OVERTON" target="_blank" rel="noopener">View on GitHub</a></li>
+        <li><a class="btn" href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW" target="_blank" rel="noopener">Experiment Data</a></li>
+        <li><a class="btn" href="https://github.com/OvertonV2X/veins-f2md" target="_blank" rel="noopener">VEINS Maps</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <section class="card">
         <h1>Introduction</h1>
-        
-      <p>This page contains artifacts for the paper: "OVERTON" submitted to the ACM CCS 2024. The artifacts include OVERTON source code, VEINS&F2MD simulator version used for experiments, traffic scenario implementations, and generated data for the scenario grid we detailed in the paper. </p>
+        <p>
+          This page contains artifacts for the paper: <strong>“OVERTON”</strong> (submitted to ACM CCS 2024).
+          The artifacts include OVERTON source code, VEINS &amp; F2MD simulator version used for experiments,
+          traffic scenario implementations, and generated data for the scenario grid we detailed in the paper.
+        </p>
+        <ul>
+          <li>OVERTON framework and instructions: <a href="https://github.com/OvertonV2X/OVERTON" target="_blank" rel="noopener">GitHub</a></li>
+          <li>VEINS maps and scenarios: <a href="https://github.com/OvertonV2X/veins-f2md" target="_blank" rel="noopener">Repo</a></li>
+          <li>Generated traffic logs: <a href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW" target="_blank" rel="noopener">Google Drive</a></li>
+        </ul>
+      </section>
 
-      
-      <h2>Running OVERTON framework</h2>
-      
-      <li>Instructions and code for the OVERTON framework is provided <a href="https://github.com/OvertonV2X/OVERTON">here</a>.</li>
-      <li>VEINS simulation maps and scenario configurations are provided <a href="https://github.com/OvertonV2X/veins-f2md">here</a>.</li>
-      <li>Generated traffic logs for OVERTON evaluation is provided <a href="https://drive.google.com/drive/folders/1qQ4VvuhZQHSKRFGCB6NnuSjIxne3vDiW">here</a>.</li>
-      
-      
+      <section>
+        <h1>VEINS Scenarios for Experiments</h1>
+        <p class="lead">Attacker nodes are depicted in red and genuine nodes in green.</p>
 
-      <h1>VEINS Scenarios for Experiments</h1>
-      Footages and resources for three different traffic scenarios used for experiments. Each scenario is 
-      tailored to demonstrate the capabilities of our solution 
-      under different traffic conditions and environments. Attacker nodes are depicted in red and genuine nodes in green.
+        <div class="grid">
+          <article class="card">
+            <h2>Manhattan Grid</h2>
+            <p>
+              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/ManhattanGrid" target="_blank" rel="noopener">This scenario</a>
+              implements a single-lane 10×10 grid map.
+            </p>
+            <ul>
+              <li>Single-lane roads with a 10×10 layout; intersections spaced 100 m apart.</li>
+              <li>100 vehicles with varying attacker densities and a balanced mix of considered attacks.</li>
+            </ul>
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/0aMBMmMEcPw" title="Manhattan Grid — OVERTON" allowfullscreen></iframe>
+            </div>
+            <div class="foot">Video: <a href="https://youtu.be/0aMBMmMEcPw" target="_blank" rel="noopener">https://youtu.be/0aMBMmMEcPw</a></div>
+          </article>
 
-      <h2> Manhattan Grid </h2>
-      <p>
-        <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/ManhattanGrid">This scenario</a> implements a single lane 10x10 grid map.
-        <li>We have developed a grid-likemap with single lanes, referred as Manhattan Grid. </li>
-        <li>Manhattan grid consist of single lane roads with a 10x10 grid layout. Intersections of roads are spaced 100m apart. </li>
-        <li>We use 100 vehicles with varying attacker densities that implements an equally represented mixture of considered attacks. </li>
+          <article class="card">
+            <h2>Erlangen Flock</h2>
+            <p>
+              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/erlangenScenario" target="_blank" rel="noopener">This scenario</a>
+              simulates a realistic rush-hour with frequent congestion.
+            </p>
+            <ul>
+              <li>Modified Erlangen city map, single designated route (no detours).</li>
+              <li>150 vehicles flock out of a parking lot every 6 s, causing occasional traffic jams.</li>
+            </ul>
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/AvogtLSoI4g" title="Erlangen Flock — OVERTON" allowfullscreen></iframe>
+            </div>
+            <div class="foot">Video: <a href="https://youtu.be/AvogtLSoI4g" target="_blank" rel="noopener">https://youtu.be/AvogtLSoI4g</a></div>
+          </article>
 
-      </p>
-      <div class="demo-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0aMBMmMEcPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="demo-video-foot">Video Link: <a href="https://youtu.be/0aMBMmMEcPw">https://youtu.be/0aMBMmMEcPw</a></div>
-				</div>
+          <article class="card">
+            <h2>IRTSX Map</h2>
+            <p>
+              <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/IRTSystemXScenario" target="_blank" rel="noopener">This scenario</a>
+              emulates regular traffic in the IRTSX campus.
+            </p>
+            <ul>
+              <li>Small network → fast and predictable runs.</li>
+              <li>Traffic lights, pedestrians, crossroads; realistic path-loss models.</li>
+              <li>300+ entities arbitrarily enter/leave the network.</li>
+            </ul>
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/vBeQfSryIos" title="IRTSX — OVERTON" allowfullscreen></iframe>
+            </div>
+            <div class="foot">Video: <a href="https://youtu.be/vBeQfSryIos" target="_blank" rel="noopener">https://youtu.be/vBeQfSryIos</a></div>
+          </article>
+        </div>
+      </section>
 
-      
-      <h2> Erlangen Flock </h2>
-      <p> <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/erlangenScenario">This scenario</a> implements a realistic rush hour scenario with frequent congestions. 
-        
-        
-        <li>
-        A modified version of Erlangen Map, implements a more realistic traffic scenario in the city of Erlangen, Germany.
-        </li>
-        <li>
+      <section class="card">
+        <h2>VEINS &amp; F2MD Simulator</h2>
+        <p>
+          OVERTON works with both ITS-G5 (IEEE 802.11p) and C-V2X (3GPP PC5 Mode 4).
+          We evaluate using VEINS &amp; F2MD V2X traffic simulators.
+          Installation instructions are available
+          <a href="https://github.com/josephkamel/F2MD" target="_blank" rel="noopener">here</a>.
+        </p>
+        <p class="note">Tip: provide a fixed release/tag of the simulator and your code for reproducibility.</p>
+      </section>
+    </main>
 
-          Specifically, 150 vehicles are flocking out of a parking lot with 6 second intervals, and head to another junction in a single designated route. 
-        
-      </li>
-        <li>
-          The vehicles are not allowed to detour for another route, which forces occasional stops and traffic jams during commute.
-        </li>
-
-
-
-      </p>
-      <div class="demo-video">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/AvogtLSoI4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="demo-video-foot">Video Link: <a href="https://youtu.be/AvogtLSoI4g">https://youtu.be/AvogtLSoI4g</a></div>
-				</div>
-      
-      <h2> IRTSX Map </h2>
-      <p>
-        <a href="https://github.com/OvertonV2X/veins-f2md/tree/main/f2md-networks/IRTSystemXScenario">This scenario</a> emulates regular traffic scenario in the IRTSX campus.
-
-        
-        
-        <li>
-          This is a relatively small network which provides fast and predictable results.
-            </li>
-        <li>
-          It implements traffic lights, pedestrians and crossroad junctions and organic network properties with realistic path loss models.
-          </li>
-          <li>
-          There  are  more  than  300  entities  that arbitrarily enter and leave the network.
-          
-        </li>
-          
-  
-      
-      </p>
-      <div class="demo-video">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/vBeQfSryIos" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="demo-video-foot">Video Link: <a href="https://youtu.be/vBeQfSryIos">https://youtu.be/vBeQfSryIos</a></div>
-				</div>
-      <!--
-      <h1>Evaluation</h1>
-      <h2> Experiment results</h2>
-      
-      <h2> VeReMI Extension Performance</h2>
-
-      <h2> LuST Scenario Performance (CaTCh scenario)</h2>
-
-      -->
-      <h2>VEINS&F2MD simulator</h2>
-      OVERTON is implemented to work on existing message interface for both ITS-G5 (IEEE 802.11p) and C-V2X (3GPP PC5 Mode 4) communication standards. The evaluation of OVERTON is performed by VEINS&F2MD V2X traffic simulators. Instructions for installing the simulator is provided <a href="https://github.com/josephkamel/F2MD">here</a>.
-
-    </div>
-  </body>
+    <footer>© OVERTON — Artifact page</footer>
+  </div>
+</body>
 </html>
