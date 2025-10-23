@@ -7,7 +7,7 @@
   <meta name="description" content="Landing page for paper artifacts." />
   <link rel="icon" href="data:," />
   <style>
-    /* === ORIGINAL STYLE (kept) === */
+    /* === ORIGINAL STYLE (unchanged) === */
     :root{
       --bg:#ffffff; --fg:#111418; --muted:#667085; --card:#f7f7f9; --border:#e6e7eb; --accent:#0b5fff;
       --link:#0b5fff; --link-visited:#6e59ff; --code:#0f172a; --code-bg:#f4f6ff;
@@ -24,21 +24,23 @@
     a{color:var(--link)} a:visited{color:var(--link-visited)}
     .container{max-width:1040px; margin:0 auto; padding:0 16px}
 
-    /* Top bar (kept minimal; no right buttons/section links) */
+    /* Sticky top bar + nav */
     .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in srgb, var(--bg) 88%, transparent); border-bottom:1px solid var(--border)}
     .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
     .brand{display:flex; align-items:baseline; gap:10px}
     .brand h1{font-size:20px; margin:0}
     .brand .sub{font-size:14px; color:var(--muted)}
     .spacer{flex:1}
-
-    /* Buttons */
-    .btn{display:inline-block; padding:.6rem 1rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
+    .navlinks{display:flex; flex-wrap:wrap; gap:8px}
+    .navlinks a{padding:.45rem .7rem; border-radius:10px; text-decoration:none; color:var(--fg)}
+    .navlinks a:hover{background:var(--card)}
+    .btn{display:inline-block; padding:.55rem .9rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
     .btn:hover{border-color:var(--accent)}
-    .cta{display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin-top:1rem}
+    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+    .btn.primary:hover{filter:saturate(110%)}
 
     /* Hero */
-    .hero{padding:36px 0 18px; text-align:center}
+    .hero{padding:36px 0 18px}
     .hero h2{margin:0 0 8px; font-size:28px}
     .hero p{margin:0; color:var(--muted)}
 
@@ -47,7 +49,7 @@
     section:first-of-type{border-top:none}
     h3{font-size:24px; margin:0 0 12px}
 
-    /* Optional helpers retained */
+    /* Cards/grid/code are available if you later need them */
     .grid{display:grid; gap:16px}
     @media (min-width: 900px){ .grid.two{grid-template-columns: 1fr 1fr} }
     .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
@@ -59,7 +61,7 @@
   </style>
 </head>
 <body>
-  <!-- Minimal top bar: only brand, no right-side blue button, no section links -->
+  <!-- Top navigation (unchanged style). Set your GitHub repo URL in the href below. -->
   <div class="topbar">
     <div class="container nav">
       <div class="brand">
@@ -67,49 +69,54 @@
         <span class="sub">research resources</span>
       </div>
       <div class="spacer"></div>
+      <nav class="navlinks" aria-label="Section navigation">
+        <a href="#intro">Introduction</a>
+        <a href="#blackbox">Black Box Framework</a>
+        <a href="#evaluate">How to Evaluate a Paper</a>
+        <a href="#iso">ISO Files</a>
+        <a href="#scripts">Scripts</a>
+        <a href="#results">Results</a>
+      </nav>
+      <a class="btn primary" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">View on GitHub</a>
     </div>
   </div>
 
-  <!-- Title page + two buttons underneath -->
+  <!-- Hero (leave blank content; you can fill later). -->
   <header class="container hero">
-    <h2><!-- Title goes here --></h2>
-    <p><!-- Optional subtitle goes here --></p>
-    <div class="cta">
-      <a class="btn" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn" href="#" target="_blank" rel="noopener">Secondary Button</a>
-    </div>
+    <h2><!-- Optional page title --></h2>
+    <p><!-- Optional subtitle/description --></p>
   </header>
 
-  <!-- The rest of the page (scrolls normally). Sections are NOT shown in the top row. -->
+  <!-- Main sections: blank placeholders only -->
   <main class="container">
     <section id="intro">
       <h3>Introduction</h3>
-      <!-- Add content later -->
+      <!-- Write your introduction here -->
     </section>
 
     <section id="blackbox">
       <h3>Black Box Framework</h3>
-      <!-- Add content later -->
+      <!-- Describe the framework here -->
     </section>
 
     <section id="evaluate">
       <h3>How to Evaluate a Paper</h3>
-      <!-- Add content later -->
+      <!-- Add evaluation steps here -->
     </section>
 
     <section id="iso">
       <h3>ISO Files</h3>
-      <!-- Add content later -->
+      <!-- Add ISO links/checksums here -->
     </section>
 
     <section id="scripts">
       <h3>Scripts</h3>
-      <!-- Add content later -->
+      <!-- Add commands or script links here -->
     </section>
 
     <section id="results">
       <h3>Results</h3>
-      <!-- Add content later -->
+      <!-- Add figures/tables/links here -->
     </section>
   </main>
 
