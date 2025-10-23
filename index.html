@@ -4,212 +4,92 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Research Artifact Page</title>
-  <meta name="description" content="Landing page for paper artifacts: black-box framework, evaluation guide, ISO files, scripts, and results." />
-  <link rel="icon" href="data:," />
   <style>
     :root{
       --bg:#ffffff; --fg:#111418; --muted:#667085; --card:#f7f7f9; --border:#e6e7eb; --accent:#0b5fff;
-      --link:#0b5fff; --link-visited:#6e59ff; --code:#0f172a; --code-bg:#f4f6ff;
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b0c0f; --fg:#eef1f6; --muted:#aab3c5; --card:#14161b; --border:#242731; --accent:#7aa2ff;
-        --link:#7aa2ff; --link-visited:#a491ff; --code:#e2e8f0; --code-bg:#0f1320;
       }
     }
     html{scroll-behavior:smooth}
-    *{box-sizing:border-box}
-    body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif}
-    a{color:var(--link)} a:visited{color:var(--link-visited)}
-    .container{max-width:1040px; margin:0 auto; padding:0 16px}
-
-    /* Header / Navbar */
-    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in srgb, var(--bg) 88%, transparent); border-bottom:1px solid var(--border)}
-    .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
-    .brand{display:flex; align-items:baseline; gap:10px}
-    .brand h1{font-size:20px; margin:0}
-    .brand .sub{font-size:14px; color:var(--muted)}
-    .spacer{flex:1}
-    .navlinks{display:flex; flex-wrap:wrap; gap:8px}
-    .navlinks a{padding:.45rem .7rem; border-radius:10px; text-decoration:none; color:var(--fg)}
+    body{margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:960px; margin:0 auto; padding:0 16px}
+    .topbar{position:sticky; top:0; z-index:100; backdrop-filter:blur(6px); background:color-mix(in srgb, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:10px 0}
+    .navlinks{display:flex; flex-wrap:wrap; gap:10px}
+    .navlinks a{padding:6px 10px; border-radius:8px;}
     .navlinks a:hover{background:var(--card)}
-    .btn{display:inline-block; padding:.55rem .9rem; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--fg); background:var(--card); font-weight:600}
+    .btn{padding:8px 12px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-weight:600;}
     .btn:hover{border-color:var(--accent)}
-    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
-    .btn.primary:hover{filter:saturate(110%)}
-
-    /* Hero */
-    .hero{padding:36px 0 18px}
-    .hero h2{margin:0 0 8px; font-size:28px}
-    .hero p{margin:0; color:var(--muted)}
-
-    /* Sections */
-    section{padding:28px 0; border-top:1px solid var(--border)}
-    section:first-of-type{border-top:none}
-    h3{font-size:24px; margin:0 0 12px}
-    .lead{color:var(--muted)}
-
-    /* Cards / grids */
-    .grid{display:grid; gap:16px}
-    @media (min-width: 900px){ .grid.two{grid-template-columns: 1fr 1fr} }
-    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
-
-    /* Code blocks */
-    pre{background:var(--code-bg); color:var(--code); padding:12px 14px; border-radius:12px; overflow:auto; border:1px solid var(--border)}
-    code{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace; font-size: .95em}
-
-    /* Footer */
-    footer{padding:24px 0 48px; color:var(--muted); text-align:center; border-top:1px solid var(--border)}
-
-    /* Small helpers */
-    .pill{display:inline-block; padding:.25rem .55rem; border:1px solid var(--border); border-radius:999px; font-size:.85rem; color:var(--muted)}
-    .downloads a{display:inline-block; padding:.5rem .75rem; border:1px dashed var(--border); border-radius:10px; text-decoration:none; margin:.25rem .25rem .25rem 0}
+    header{padding:32px 0; text-align:center;}
+    header h1{margin:0; font-size:28px;}
+    main section{padding:40px 0; border-top:1px solid var(--border)}
+    main h2{margin-bottom:12px;}
+    footer{padding:24px 0; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
   </style>
 </head>
 <body>
-  <!-- Sticky top bar with GitHub button and in-page links -->
   <div class="topbar">
     <div class="container nav">
-      <div class="brand">
-        <h1>Artifact Page</h1>
-        <span class="sub">research resources</span>
-      </div>
-      <div class="spacer"></div>
-      <nav class="navlinks" aria-label="Section navigation">
+      <div class="navlinks">
         <a href="#intro">Introduction</a>
         <a href="#blackbox">Black Box Framework</a>
         <a href="#evaluate">How to Evaluate a Paper</a>
         <a href="#iso">ISO Files</a>
         <a href="#scripts">Scripts</a>
         <a href="#results">Results</a>
-      </nav>
-      <a class="btn primary" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <a class="btn" href="#" target="_blank">View on GitHub</a>
     </div>
   </div>
 
-  <header class="container hero">
-    <h2>Welcome — همهٔ مواد و نتایج اینجاست</h2>
-    <p>می‌توانید از لینک بالا وارد ریپازیتوری شوید و پایین صفحه را اسکرول کنید تا هر بخش را ببینید.</p>
+  <header>
+    <h1>Research Artifact Page</h1>
+    <p>Fill in your project title and description here.</p>
   </header>
 
   <main class="container">
-    <!-- Introduction -->
-    <section id="intro" aria-labelledby="intro-title">
-      <h3 id="intro-title">Introduction</h3>
-      <p class="lead">Briefly describe the goal of the project, the paper this artifact belongs to, and what reviewers/users will find here.</p>
-      <ul>
-        <li><strong>Paper:</strong> <a href="#">PDF link</a></li>
-        <li><strong>Codebase:</strong> <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">GitHub repository</a></li>
-        <li><strong>Contact during review:</strong> anonymous email or GitHub Issues</li>
-      </ul>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>Write your introduction here.</p>
     </section>
 
-    <!-- Black Box Framework -->
-    <section id="blackbox" aria-labelledby="blackbox-title">
-      <h3 id="blackbox-title">Black Box Framework</h3>
-      <p>Our scoring framework computes <em>Privacy</em>, <em>Safety</em>, and <em>Utility</em> from a paper-specific metrics file and a fixed weights file.</p>
-      <div class="grid two">
-        <div class="card">
-          <h4 class="pill">Config structure</h4>
-          <pre><code>{
-  "Privacy": { "P1a": { "answer": true,  "weight": 0.1, "evidence": "" },
-                "P1b": { "answer": false, "weight": 0.1, "evidence": "" } },
-  "Safety":  { /* ... */ },
-  "Utility": { /* ... */ }
-}</code></pre>
-        </div>
-        <div class="card">
-          <h4 class="pill">Weights file</h4>
-          <pre><code>{
-  "Privacy": { "P1a": 0.1, "P1b": 0.1, /* ... */ },
-  "Safety":  { /* ... */ },
-  "Utility": { /* ... */ }
-}</code></pre>
-        </div>
-      </div>
-      <p>The script awards each <code>true</code> metric the corresponding weight and sums to produce final scores.</p>
+    <section id="blackbox">
+      <h2>Black Box Framework</h2>
+      <p>Describe your black box framework here.</p>
     </section>
 
-    <!-- How to evaluate a paper -->
-    <section id="evaluate" aria-labelledby="evaluate-title">
-      <h3 id="evaluate-title">How to Evaluate a Paper</h3>
-      <ol>
-        <li>Fill the <strong>metrics JSON</strong> for the paper (see template above).</li>
-        <li>Use the fixed <strong>weights JSON</strong>.</li>
-        <li>Run the scoring script (see <a href="#scripts">Scripts</a>).</li>
-        <li>Collect scores and export to CSV for the <a href="#results">Results</a> section.</li>
-      </ol>
-      <pre><code># Example command
-python tools/score_paper.py \
-  --metrics configs/paper123.metrics.json \
-  --weights configs/weights.json \
-  --out outputs/paper123_scores.json</code></pre>
+    <section id="evaluate">
+      <h2>How to Evaluate a Paper</h2>
+      <p>Explain how to evaluate a paper here.</p>
     </section>
 
-    <!-- ISO files -->
-    <section id="iso" aria-labelledby="iso-title">
-      <h3 id="iso-title">ISO Files</h3>
-      <p class="lead">Prebuilt images/releases for reproducibility (pick the version that matches the paper).</p>
-      <div class="card downloads">
-        <a href="#">artifact-v1.iso</a>
-        <a href="#">artifact-v1.1.iso</a>
-        <a href="#">artifact-v2.iso</a>
-        <a href="#">checksums.txt</a>
-      </div>
-      <p class="note">Tip: host ISOs on GitHub Releases and link them here. Provide checksums and a short boot guide.</p>
+    <section id="iso">
+      <h2>ISO Files</h2>
+      <p>Provide links or descriptions for ISO files here.</p>
     </section>
 
-    <!-- Scripts -->
-    <section id="scripts" aria-labelledby="scripts-title">
-      <h3 id="scripts-title">Scripts</h3>
-      <p>Minimal commands to reproduce the main results.</p>
-      <div class="grid two">
-        <div class="card">
-          <h4 class="pill">Setup</h4>
-          <pre><code>python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
-pip install -r requirements.txt</code></pre>
-        </div>
-        <div class="card">
-          <h4 class="pill">Run</h4>
-          <pre><code>python scripts/run_experiments.py --config configs/default.json
-python scripts/plot_results.py --input outputs/results.csv --out figs/</code></pre>
-        </div>
-      </div>
+    <section id="scripts">
+      <h2>Scripts</h2>
+      <p>Include or describe your scripts here.</p>
     </section>
 
-    <!-- Results -->
-    <section id="results" aria-labelledby="results-title">
-      <h3 id="results-title">Results</h3>
-      <p>Summary scores and figures. You can embed small PNG/SVG charts here or link to a gallery.</p>
-      <div class="grid two">
-        <div class="card">
-          <h4 class="pill">Scores (example)</h4>
-          <pre><code>{
-  "paper_id": "P-001",
-  "privacy": 0.72,
-  "safety": 0.64,
-  "utility": 0.81
-}</code></pre>
-        </div>
-        <div class="card">
-          <h4 class="pill">Figures</h4>
-          <ul>
-            <li><a href="#">Figure 1 — Overview diagram</a></li>
-            <li><a href="#">Figure 2 — P/U/S scatter</a></li>
-          </ul>
-        </div>
-      </div>
+    <section id="results">
+      <h2>Results</h2>
+      <p>Summarize your results here.</p>
     </section>
   </main>
 
   <footer>
-    <div class="container">© <span id="y"></span> Research Artifact Page — <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener">GitHub</a></div>
+    © <span id="year"></span> Research Artifact Page
   </footer>
 
   <script>
-    // Update footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
