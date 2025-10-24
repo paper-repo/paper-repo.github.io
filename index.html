@@ -83,23 +83,19 @@
   <!-- The rest of the page (scrolls normally). Sections are NOT shown in the top row. -->
   <main class="container">
     <section id="intro">
-      <h3>Introduction</h3>
-      <!-- Add content later -->
+      <h3>Introduction</h3> 
+      In this study, a comprehensive systematization of knowledge (SoK) in the field of privacy in cyber-physical systems (CPS) and autonomous systems (AS) is presented, with a special focus on methods based on differential privacy.
     </section>
 
     <section id="blackbox">
       <h3>Black Box Framework</h3>
-      <!-- Add content later -->
+      we propose a framework that works as a black box, takes a research paper as input and produces three output scores for three metrics:privacy, safety, and utility.
+      Each metric is divided into several factors that represent both technical depth and practical relevance. The scoring is additive, and each factor has a fixed weight, giving a final normalized value between [0,1]
     </section>
 
     <section id="evaluate">
       <h3>How to Evaluate a Paper</h3>
-      <!-- Add content later -->
-    </section>
-
-    <section id="iso">
-      <h3>ISO Files</h3>
-      <!-- Add content later -->
+      The evaluation is based on predefined configuration file. One configuration file must be completed by the user to indicate whether each factor is present in the paper (true/false). Another file contains the predefined weights for all factors, which does not need to be modified for each evaluation. The framework compares these two files and calculates the final scores based on the factors marked as true and their corresponding weights. The resulting output includes the three scores for privacy, utility, and safety.
     </section>
 
     <section id="scripts">
