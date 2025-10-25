@@ -79,7 +79,6 @@
     </div>
   </header>
 
-  <!-- The rest of the page (scrolls normally). Sections are NOT shown in the top row. -->
   <main class="container">
     <section id="intro">
       <h3>Introduction</h3> 
@@ -87,53 +86,93 @@
       This page provides an overview of our proposed approach and the main results of our study. 
     </section>
 
-   <section id="blackbox">
-  <h3>Black Box Framework</h3>
-  <p>
-    We propose a framework that works as a <strong>black box</strong>, taking a research paper as input and producing three output scores for three key metrics:
-    <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong>.
-  </p>
-  <p>
-    Each metric is divided into several factors representing both technical depth and practical relevance. 
-    The scoring is additive, and each factor has a fixed weight, giving a final normalized value between <code>[0, 1]</code>.
-  </p>
+    <section id="blackbox">
+      <h3>Black Box Framework</h3>
+      <p>
+      We propose a framework that works as a <strong>black box</strong>, taking a research paper as input and producing three output scores for three key metrics:
+      <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong>.
+      </p>
+      <p>
+      Each metric is divided into several factors representing both technical depth and practical relevance. 
+      The scoring is additive, and each factor has a fixed weight, giving a final normalized value between <code>[0, 1]</code>.
+      </p>
 
-  <h4>Inside the Black Box</h4>
-  <p>
-    A Python-based evaluation code is executed inside the black box. The code takes two JSON files as input:
-  </p>
-  <ul>
-    <li><strong>Weight file</strong> – a predefined file containing fixed weights for all evaluation factors, designed by us.</li>
-    <li><strong>Paper file</strong> – a customizable file filled by the evaluator, indicating which factors are satisfied by the target paper.</li>
-  </ul>
+      <h4>Inside the Black Box</h4>
+      <p>
+        A Python-based evaluation code is executed inside the black box. The code takes two JSON files as input:
+      </p>
+      <ul>
+        <li><strong>Weight file</strong> :a predefined JSON file containing fixed weights for all evaluation factors, designed by us.</li>
+        <li><strong>Paper file</strong> :a customizable JSON file filled by the evaluator, indicating which factors are true/false by the target paper.</li>
+      </ul>
 
-  <p>
-    When the code runs, it compares the evaluator’s inputs with the weight file. 
-    For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
-    The sum is normalized to a value between <code>0</code> and <code>1</code>, representing the final scores for 
-    <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> — the outputs of the black box.
-  </p>
-
-  <h4>Main Evaluation Function</h4>
-  <pre><code class="language-python">
-def main(answers_file, weights_file):
-    answers, weights = load(answers_file), load(weights_file)
-    result = {}
-    for cat in ["Privacy", "Utility", "Safety"]:
-        a = answers.get(cat, {})
-        w = weights.get(cat, {})
-        result[cat] = round(compute_score(a, w), 3)
-    print(json.dumps(result, indent=2))
-  </code></pre>
-
-  <h4>Example Output</h4>
-  <pre><code class="language-json">
-{
-  "Privacy": 0.82,
-  "Utility": 0.76,
-  "Safety": 0.68
-}
-  </code></pre>
+      <p>
+        When the code runs, it compares the evaluator’s inputs with the weight file. 
+        For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
+        The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
+        <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> the outputs of the black box.
+      </p>
+    
+      <style>
+        .code-container {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          flex-wrap: wrap; 
+        }
+      
+        .code-box {
+          background-color: #f6f8fa;
+          border-radius: 8px;
+          padding: 16px;
+          width: 48%; 
+          box-sizing: border-box;
+        }
+      
+        pre {
+          background: none;
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.4;
+        }
+      
+        code {
+          font-family: "JetBrains Mono", "Fira Code", monospace;
+        }
+      
+        @media (max-width: 900px) {
+          .code-box {
+            width: 100%;
+          }
+        }
+  </style>
+  <h4>Code Implementation</h4>
+      <div class="code-container">
+        <div class="code-box">
+          <h5>Main Evaluation Function</h5>
+          <pre><code class="language-python">
+    def main(answers_file, weights_file):
+        answers, weights = load(answers_file), load(weights_file)
+        result = {}
+        for cat in ["Privacy", "Utility", "Safety"]:
+            a = answers.get(cat, {})
+            w = weights.get(cat, {})
+            result[cat] = round(compute_score(a, w), 3)
+        print(json.dumps(result, indent=2))
+          </code></pre>
+        </div>
+    
+        <div class="code-box">
+          <h5>Example Output</h5>
+          <pre><code class="language-json">
+    {
+      "Privacy": 0.82,
+      "Utility": 0.76,
+      "Safety": 0.68
+    }
+      </code></pre>
+    </div>
+  </div>
 </section>
 
 
