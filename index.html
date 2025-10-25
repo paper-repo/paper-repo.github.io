@@ -82,23 +82,25 @@
   <main class="container">
     <section id="intro">
       <h3>Introduction</h3> 
+       <p style="text-align: justify;">
       In this study, a comprehensive systematization of knowledge (SoK) in the field of privacy in cyber-physical systems (CPS) and autonomous systems (AS) is presented, with a special focus on methods based on differential privacy.
       This page provides an overview of our proposed approach and the main results of our study. 
+      </p>
     </section>
 
     <section id="blackbox">
       <h3>Black Box Framework</h3>
-      <p>
+      <p style="text-align: justify;">
       We propose a framework that works as a <strong>black box</strong>, taking a research paper as input and producing three output scores for three key metrics:
       <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong>.
       </p>
-      <p>
+      <p style="text-align: justify;">
       Each metric is divided into several factors representing both technical depth and practical relevance. 
       The scoring is additive, and each factor has a fixed weight, giving a final normalized value between <code>[0, 1]</code>.
       </p>
 
       <h4>Inside the Black Box</h4>
-      <p>
+      <p style="text-align: justify;">
         A Python-based evaluation code is executed inside the black box. The code takes two JSON files as input:
       </p>
       <ul>
@@ -181,7 +183,7 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
 });
 </script>
 
-     <p>
+     <p style="text-align: justify;">
         When the code runs, it compares the evaluator’s inputs with the weight file. 
         For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
         The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
@@ -370,7 +372,7 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
 
     </style>
 
-    <p>
+    <p style="text-align: justify;">
        We evaluated all references using this framework. The quantitative results are summarized in the table below and visualized in an interactive 3D plot. The plot was generated with Plotly and customized to highlight the relationship between Privacy, Utility, and Safety for each paper.
     </p>
 
@@ -494,7 +496,7 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
 </div>
     
     <h4>3D Plot</h4>
-     <p>
+    <p style="text-align: justify;">
      We have shown the result of the evaluated framework as a 3D generated with Plotly to highlight the relationship between Privacy, Utility, and Safety for each paper which isshwon in the following plot. The three axes of the graph represent the normalized scores for privacy, utility, and safety. In this graph each point represents one of the reviewed article and is labeled with corresponding references number. 
        Articles that have a higher overall score across all three dimensions are displayed in lighter, yellowish colors. In contrast, articles with a lower overall score are marked in darker colors, indicating weakness in one or more dimensions.
       Overall, this visual representation shows that the color spectrum of the points intuitively reflects the range and trade-off between the three main indices of privacy, safety, and efficiency.
