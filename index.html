@@ -84,13 +84,58 @@
     <section id="intro">
       <h3>Introduction</h3> 
       In this study, a comprehensive systematization of knowledge (SoK) in the field of privacy in cyber-physical systems (CPS) and autonomous systems (AS) is presented, with a special focus on methods based on differential privacy.
+      This page provides an overview of our proposed approach and the main results of our study. 
     </section>
 
-    <section id="blackbox">
-      <h3>Black Box Framework</h3>
-      we propose a framework that works as a black box, takes a research paper as input and produces three output scores for three metrics:privacy, safety, and utility.
-      Each metric is divided into several factors that represent both technical depth and practical relevance. The scoring is additive, and each factor has a fixed weight, giving a final normalized value between [0,1]
-    </section>
+   <section id="blackbox">
+  <h3>Black Box Framework</h3>
+  <p>
+    We propose a framework that works as a <strong>black box</strong>, taking a research paper as input and producing three output scores for three key metrics:
+    <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong>.
+  </p>
+  <p>
+    Each metric is divided into several factors representing both technical depth and practical relevance. 
+    The scoring is additive, and each factor has a fixed weight, giving a final normalized value between <code>[0, 1]</code>.
+  </p>
+
+  <h4>Inside the Black Box</h4>
+  <p>
+    A Python-based evaluation code is executed inside the black box. The code takes two JSON files as input:
+  </p>
+  <ul>
+    <li><strong>Weight file</strong> – a predefined file containing fixed weights for all evaluation factors, designed by us.</li>
+    <li><strong>Paper file</strong> – a customizable file filled by the evaluator, indicating which factors are satisfied by the target paper.</li>
+  </ul>
+
+  <p>
+    When the code runs, it compares the evaluator’s inputs with the weight file. 
+    For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
+    The sum is normalized to a value between <code>0</code> and <code>1</code>, representing the final scores for 
+    <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> — the outputs of the black box.
+  </p>
+
+  <h4>Main Evaluation Function</h4>
+  <pre><code class="language-python">
+def main(answers_file, weights_file):
+    answers, weights = load(answers_file), load(weights_file)
+    result = {}
+    for cat in ["Privacy", "Utility", "Safety"]:
+        a = answers.get(cat, {})
+        w = weights.get(cat, {})
+        result[cat] = round(compute_score(a, w), 3)
+    print(json.dumps(result, indent=2))
+  </code></pre>
+
+  <h4>Example Output</h4>
+  <pre><code class="language-json">
+{
+  "Privacy": 0.82,
+  "Utility": 0.76,
+  "Safety": 0.68
+}
+  </code></pre>
+</section>
+
 
     <section id="evaluate">
   <h3>How to Evaluate a Paper</h3>
