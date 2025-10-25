@@ -114,72 +114,89 @@
       </p>
     
       <style>
-        .code-container {
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
-          flex-wrap: wrap; 
-        }
-      
-        .code-box {
-          background-color: #f6f8fa;
-          border-radius: 8px;
-          padding: 16px;
-          width: 48%; 
-          box-sizing: border-box;
-        }
-      
-        pre {
-          background: none;
-          margin: 0;
-          font-size: 14px;
-          line-height: 1.4;
-        }
-      
-        code {
-          font-family: "JetBrains Mono", "Fira Code", monospace;
-        }
-      
-        @media (max-width: 900px) {
-          .code-box {
-            width: 100%;
-          }
-        }
-  </style>
-  <h4>Code Implementation</h4>
-      <div class="code-container">
-        <div class="code-box">
-          <h5>Main Evaluation Function</h5>
-          <pre><code class="language-python">
-    def main(answers_file, weights_file):
-        answers, weights = load(answers_file), load(weights_file)
-        result = {}
-        for cat in ["Privacy", "Utility", "Safety"]:
-            a = answers.get(cat, {})
-            w = weights.get(cat, {})
-            result[cat] = round(compute_score(a, w), 3)
-        print(json.dumps(result, indent=2))
-          </code></pre>
-        </div>
-    
-        <div class="code-box">
-          <h5>Example Output</h5>
-          <pre><code class="language-json">
-    {
-      "Privacy": 0.82,
-      "Utility": 0.76,
-      "Safety": 0.68
+  .code-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  figure.code-box {
+    background-color: #f6f8fa;
+    border-radius: 8px;
+    padding: 0;
+    width: 48%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  figcaption {
+    background-color: #eef0f3;
+    font-weight: 600;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  pre {
+    background: none;
+    margin: 0;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+  }
+
+  @media (max-width: 900px) {
+    figure.code-box {
+      width: 100%;
     }
+  }
+</style>
+
+<section id="blackbox-code">
+  <h4>Code Implementation</h4>
+  <div class="code-container">
+
+    <figure class="code-box">
+      <figcaption>Main Evaluation Function</figcaption>
+      <pre><code class="language-python">
+def main(answers_file, weights_file):
+    answers, weights = load(answers_file), load(weights_file)
+    result = {}
+    for cat in ["Privacy", "Utility", "Safety"]:
+        a = answers.get(cat, {})
+        w = weights.get(cat, {})
+        result[cat] = round(compute_score(a, w), 3)
+    print(json.dumps(result, indent=2))
       </code></pre>
-    </div>
+    </figure>
+
+    <figure class="code-box">
+      <figcaption>Example Output</figcaption>
+      <pre><code class="language-json">
+{
+  "Privacy": 0.82,
+  "Utility": 0.76,
+  "Safety": 0.68
+}
+      </code></pre>
+    </figure>
+
   </div>
 </section>
+
 
 
     <section id="evaluate">
   <h3>How to Evaluate a Paper</h3>
   <p>
     The evaluation is based on predefined configuration JSON files. One configuration file must be completed by the user to indicate whether each factor is present in the paper (true/false). Another file contains the predefined weights for all factors. The framework compares these two files and calculates the final scores for privacy, utility, and safety.
+    We evaluated all refrences and plotted a 3d graph of all results.
   </p>
 
   <div class="code-grid">
