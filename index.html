@@ -174,18 +174,17 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
 
     <style>
     .full-bleed {
-      position: relative;
+      position: relative;     
       width: 100%;
-      max-width: 1440px;
-      left: 50%;
-      margin-left: -50vw;
-    
+      max-width: 1440px;      
+      margin: 0 auto;           
       aspect-ratio: 16/9;
       border: 1px solid #e6e7eb;
       border-radius: 12px;
       overflow: hidden;
+      left: auto;           
+      margin-left: 0;
     }
-    
     .full-bleed iframe {
       position: absolute;
       inset: 0;
@@ -194,6 +193,7 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
       border: 0;
       display: block;
     }
+
     </style>
     
     <section id="results">
