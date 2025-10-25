@@ -112,20 +112,20 @@
         The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
         <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> the outputs of the black box.
       </p>
-    
-      <style>
-      .code-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
+  
+<style>
+  .code-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap; /* جلوگیری از رفتن زیر هم */
+  }
 
   figure.code-box {
     background-color: #f6f8fa;
     border-radius: 8px;
     padding: 0;
-    width: 45%;
+    width: 47%;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -152,6 +152,9 @@
   }
 
   @media (max-width: 900px) {
+    .code-container {
+      flex-wrap: wrap; /* فقط در موبایل زیر هم بیان */
+    }
     figure.code-box {
       width: 100%;
     }
@@ -192,31 +195,6 @@ def main(answers_file, weights_file):
 
 
 
-    <section id="evaluate">
-  <h3>How to Evaluate a Paper</h3>
-  <p>
-    The evaluation is based on predefined configuration JSON files. One configuration file must be completed by the user to indicate whether each factor is present in the paper (true/false). Another file contains the predefined weights for all factors. The framework compares these two files and calculates the final scores for privacy, utility, and safety.
-    We evaluated all refrences and plotted a 3d graph of all results.
-  </p>
-
-  <div class="code-grid">
-    <figure class="code-card" data-src="https://raw.githubusercontent.com/paper-repo/sok/main/paper.json">
-      <figcaption>
-        <strong>metrics.json</strong>
-        <button class="copy-btn" type="button">Copy</button>
-      </figcaption>
-      <pre><code>{ "example": "metrics content will load..." }</code></pre>
-    </figure>
-
-    <figure class="code-card" data-src="https://raw.githubusercontent.com/paper-repo/sok/main/weight.json">
-      <figcaption>
-        <strong>weights.json</strong>
-        <button class="copy-btn" type="button">Copy</button>
-      </figcaption>
-      <pre><code>{ "example": "weights content will load..." }</code></pre>
-    </figure>
-  </div>
-</section>
 
 <style>
   .code-grid{
