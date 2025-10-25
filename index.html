@@ -374,14 +374,20 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
        We evaluated all references using this framework. The quantitative results are summarized in the table below and visualized in an interactive 3D plot. The plot was generated with Plotly and customized to highlight the relationship between Privacy, Utility, and Safety for each paper.
     </p>
 
-    <style>
+   <style>
+  .table-container {
+    max-height: 500px; 
+    overflow-y: auto;  
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 5px;
+  }
+
   table.metric-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 30px;
     font-size: 14px;
     text-align: center;
-    border: 1px solid #e0e0e0;
   }
 
   table.metric-table th {
@@ -389,6 +395,9 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
     font-weight: 600;
     padding: 10px;
     border-bottom: 1px solid #d6d8db;
+    position: sticky; 
+    top: 0;         
+    z-index: 2;
   }
 
   table.metric-table td {
