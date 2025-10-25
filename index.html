@@ -112,6 +112,105 @@
         The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
         <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> the outputs of the black box.
       </p>
+
+      
+  <div class="code-grid">
+    <figure class="code-card" data-src="https://raw.githubusercontent.com/paper-repo/sok/main/paper.json">
+      <figcaption>
+        <strong>metrics.json</strong>
+        <button class="copy-btn" type="button">Copy</button>
+      </figcaption>
+      <pre><code>{ "example": "metrics content will load..." }</code></pre>
+    </figure>
+
+    <figure class="code-card" data-src="https://raw.githubusercontent.com/paper-repo/sok/main/weight.json">
+      <figcaption>
+        <strong>weights.json</strong>
+        <button class="copy-btn" type="button">Copy</button>
+      </figcaption>
+      <pre><code>{ "example": "weights content will load..." }</code></pre>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .code-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    align-items:start;
+  }
+  @media (max-width: 800px){
+    .code-grid{ grid-template-columns:1fr; }
+  }
+  .code-card{
+    border:1px solid #e6e7eb; border-radius:12px; overflow:hidden;
+    background:#fafafa;
+  }
+  .code-card figcaption{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 12px; background:#fff; border-bottom:1px solid #e6e7eb;
+    font-family:system-ui, Arial, sans-serif; font-size:14px;
+  }
+  .copy-btn{
+    border:1px solid #d0d2d7; background:#f6f7f9; padding:4px 10px;
+    border-radius:8px; cursor:pointer; font-size:12px;
+  }
+  .copy-btn:hover{ background:#eef0f4; }
+  .code-card pre{
+    margin:0; padding:12px; max-height:360px; overflow:auto;
+    font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    white-space:pre; background:#fafafa;
+  }
+</style>
+
+<script>
+// Pretty-print each JSON card by fetching its data-src
+document.querySelectorAll('.code-card').forEach(async card => {
+  const src = card.getAttribute('data-src');
+  const codeEl = card.querySelector('pre > code');
+  try {
+    const res = await fetch(src);
+    const json = await res.json();
+    codeEl.textContent = JSON.stringify(json, null, 2);
+  } catch (e) {
+    // fallback: leave existing content
+    console.warn('Could not load', src, e);
+  }
+});
+
+// Copy button
+document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const code = btn.closest('.code-card').querySelector('pre > code').textContent;
+    navigator.clipboard.writeText(code);
+    btn.textContent = 'Copied!';
+    setTimeout(() => (btn.textContent = 'Copy'), 1200);
+  });
+});
+</script>
+
+
+    <style>
+    .full-bleed {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+    
+      aspect-ratio: 16/9;
+      border: 1px solid #e6e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .full-bleed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    </style>
   
 <style>
   .code-container {
@@ -161,8 +260,7 @@
   }
 </style>
 
-<section id="blackbox-code">
-  <h4>Code Implementation</h4>
+
   <div class="code-container">
 
     <figure class="code-box">
@@ -191,7 +289,6 @@ def main(answers_file, weights_file):
     </figure>
 
   </div>
-</section>
 
 
 
