@@ -106,13 +106,6 @@
         <li><strong>Paper file</strong> :a customizable JSON file filled by the evaluator, indicating which factors are true/false by the target paper.</li>
       </ul>
 
-      <p>
-        When the code runs, it compares the evaluator’s inputs with the weight file. 
-        For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
-        The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
-        <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> the outputs of the black box.
-      </p>
-
       
   <div class="code-grid">
     <figure class="code-card" data-src="https://raw.githubusercontent.com/paper-repo/sok/main/paper.json">
@@ -188,7 +181,12 @@ document.querySelectorAll('.code-card .copy-btn').forEach(btn => {
 });
 </script>
 
-
+     <p>
+        When the code runs, it compares the evaluator’s inputs with the weight file. 
+        For every factor marked as <code>true</code>, its corresponding weight is added to the total score. 
+        The sum is a value between <code>0</code> and <code>1</code>, representing the final scores for 
+        <strong>Privacy</strong>, <strong>Safety</strong>, and <strong>Utility</strong> the outputs of the black box.
+      </p>
     <style>
     .full-bleed {
       position: relative;
